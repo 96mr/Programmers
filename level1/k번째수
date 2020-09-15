@@ -1,0 +1,14 @@
+import java.util.*;
+class Solution {
+    public int[] solution(int[] array, int[][] commands) {
+        int[] answer = new int[commands.length];
+        
+        for(int i = 0 ; i < commands.length ; i++){
+            // 배열 복사(commands[i][0]-1번째부터 commands[i][1]-1번째까지)
+            int[] arr = Arrays.copyOfRange(array, commands[i][0]-1, commands[i][1]); 
+            Arrays.sort(arr); 
+            answer[i] = arr[commands[i][2]-1]; 
+        }     
+        return answer;
+    }
+}
