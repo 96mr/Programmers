@@ -1,0 +1,25 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Iterator;
+import java.util.Map.Entry;
+class Solution {
+    public String solution(String[] participant, String[] completion) {
+        String answer = "";
+        Map<String, Integer> map = new HashMap<>();//참여선수 : 동일이름
+       //참여선수 map에 put 하기 (getOrDefalut(있을때 값, map에 없을때 값))
+        for(String str : participant){
+            map.put(str,map.getOrDefault(str, 0)+1);
+        }
+        //완주선수 있으면 map에서 값을 -1 함
+        for(String str : completion){
+            map.put(str, map.get(str)-1);
+        }
+        
+        //맵에 남은 것 중에서 값이 1인것 = 완주하지 못한 선수
+        for(String str : map.keySet()){
+            if(map.get(str) != 0 ) answer = str;
+        }
+        
+        return answer;
+    }
+}
