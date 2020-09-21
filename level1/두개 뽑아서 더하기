@@ -1,20 +1,21 @@
 import java.util.*;
 class Solution {
     public int[] solution(int[] numbers) {
-        List<Integer> list = new ArrayList<Integer>();
+        List<Integer> list = new ArrayList<Integer>();	//랜덤 두 수를 더한 값을 넣을 리스트
         for(int i = 0; i < numbers.length-1 ; i++){
         	for(int j = i+1 ;j <numbers.length;j++) {
 	        	int sum = numbers[i] + numbers[j];
-	            if(!list.contains(sum)) {
+	            if(!list.contains(sum)) {		//리스트에 중복되지 않으면 추가
 	            	list.add(sum);
 	            }
         	}
         }
+	
         int[] answer = new int[list.size()];
         for(int i = 0; i < answer.length; i++){
             answer[i] = list.get(i);
         }
-        Arrays.sort(answer);
+        Arrays.sort(answer);	// 오름차순으로 정렬
         return answer;
     }
 }
