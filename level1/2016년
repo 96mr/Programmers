@@ -1,0 +1,16 @@
+class Solution {
+    public String solution(int a, int b) {
+        String answer = "";
+        String[] date_arr = {"FRI","SAT","SUN","MON","TUE","WED","THU"};
+        int[] day_arr = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        
+        int total_day = 0;
+        for(int i = 0 ; i < a-1 ; i++ ){
+            total_day += day_arr[i];
+        }
+
+        total_day += (b-1); 
+        answer = date_arr[total_day% 7];
+        return answer;
+    }
+}
