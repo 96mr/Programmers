@@ -1,0 +1,23 @@
+import java.util.*;
+class Solution {
+    public String[] solution(String[] strings, int n) {
+        String[] answer = new String[strings.length];
+         Arrays.sort(strings); // 사전순으로 정렬
+        //n번째 글자 기준으로 정렬 
+        for(int i = 0 ; i < strings.length - 1 ; i++){
+            for(int j = 0 ; j < strings.length - 1 - i ; j++){
+                if(strings[j].charAt(n) > strings[j+1].charAt(n)){ 
+                    //i번째 < i-1번째 이면 순서 
+                    String temp = strings[j];
+                    strings[j] = strings[j+1];
+                    strings[j+1] = temp;
+                }
+            }
+        }
+        int idx = 0;
+        for(String str : strings){
+            answer[idx++] = str;
+        }
+        return answer;
+    }
+}
