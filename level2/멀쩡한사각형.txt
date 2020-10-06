@@ -1,0 +1,17 @@
+import java.util.*;
+class Solution {
+    public long solution(int w, int h) {
+        long answer = (long)w*h;
+
+        int max = Math.max(w,h);
+        int min = Math.min(w,h);
+        int gcd = gcd_num(max,min);
+        answer = (long)w*h - gcd * (min/gcd + max/gcd - 1);        
+        return answer;
+    }
+    
+    public static int gcd_num(int a, int b){
+        if(b == 0) return a;
+        return gcd_num(b, a % b);
+    }
+}
