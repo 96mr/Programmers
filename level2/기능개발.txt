@@ -1,0 +1,38 @@
+import java.util.*;
+class Solution {
+    public int[] solution(int[] progresses, int[] speeds) {
+        Queue<Integer> prog = new LinkedList();
+        Queue<Integer> speed = new LinkedList();
+        
+        for(int i = 0; i < progresses.length ; i++){
+            prog.offer(progresses[i]);
+            speed.offer(speeds[i]);
+        }
+        
+        List<Integer> list = new ArrayList<>(); 
+        int finish_day = 1;
+        int finish_num = 0;
+        while(!prog.isEmpty()){
+            if(100 <= prog.peek()+(speed.peek()*finish_day)){
+                prog.poll();
+                speed.poll();
+                finish_num++;
+            }else{
+                if(finish_num != 0){
+                    list.add(finish_num);
+                }
+                finish_day++;
+                finish_num = 0;
+                continue;
+            }
+        }  
+        list.add(finish_num);
+        
+        int[] answer = new int[list.size()];
+        for(int i = 0 ; i< list.size();i++){
+            answer[i] = list.get(i);
+        }
+        
+        return answer;
+    }
+}
