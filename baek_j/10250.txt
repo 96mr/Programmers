@@ -1,0 +1,26 @@
+public class Main {
+	public static void main(String[] args) throws Exception {
+		double start = System.currentTimeMillis();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		int data = Integer.parseInt(br.readLine());
+		for(int i = 0 ; i < data ; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine()," ");
+			int H = Integer.parseInt(st.nextToken());
+			int W = Integer.parseInt(st.nextToken());
+			int N = Integer.parseInt(st.nextToken());
+			
+			int h = N % H == 0 ? H * 100 : (N % H) * 100;
+			int w = N % H == 0 ? N / H : N / H + 1;
+			
+			bw.write(String.valueOf(h+w)+"\n");
+		}
+
+		double end = System.currentTimeMillis();
+		System.out.println((end-start));
+		bw.flush();
+		br.close();
+		bw.close();		
+	}
+	
+}
